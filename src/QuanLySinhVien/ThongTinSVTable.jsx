@@ -4,6 +4,7 @@ import { quanLySinhVienActions } from '../store/QuanLySinhVien/slice'
 
 export const ThongTinSVTable = () => {
   const {studentList} = useSelector((state) => state.quanLySinhVien)
+  console.log('studentList', studentList);
   const dispatch = useDispatch()
   return (
     <div className='mt-5'>

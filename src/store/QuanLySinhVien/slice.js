@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   studentList: [
     {
@@ -28,12 +29,13 @@ const QuanLySinhVienSlice = createSlice({
   initialState,
   reducers: {
     addStudent: (state, { payload }) => {
+      //console.log("payload: ", payload);
       state.studentList.push(payload);
     },
 
     deleteStudent: (state, { payload }) => {
       state.studentList = state.studentList.filter(
-        (value) => value.id !== payload.id
+        (value) => value.id !== payload
       );
     },
 
