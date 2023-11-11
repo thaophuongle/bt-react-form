@@ -47,7 +47,7 @@ export const ThongTinSVForm = () => {
           if (value.trim() === "") {
             return "vui lòng nhập thông tin";
           }
-          else if (checkId(value)) {
+          else if (checkId(value) && studentEdit===undefined) {
             return "Mã sinh viên bị trùng";
           }
           else {
@@ -145,6 +145,7 @@ export const ThongTinSVForm = () => {
               type="text"
               className="form-control"
               value={formValue.id}
+              disabled={formValue.id === studentEdit?.id}
               onChange={handleFormValue("id")}
             />
             {formError.id && (
