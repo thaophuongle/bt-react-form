@@ -20,6 +20,22 @@ export const ThongTinSVForm = () => {
   const { studentEdit } = useSelector((state) => state.quanLySinhVien);
   const {studentList} = useSelector((state) => state.quanLySinhVien)
 
+  const checkId = (id) => {
+    var studentIndex = studentList.findIndex((student) => {
+        return student.id == id
+    })
+
+    if (studentIndex != -1) {
+        return true
+    }
+    else {
+        return false
+    }
+
+
+}
+
+
   const handleFormValue = (name) => (event) => {
     setFormError({ ...formError, [name]: validateInput(name, event.target.value) });
     setFormValue({ ...formValue, [name]: event.target.value });
@@ -30,6 +46,9 @@ export const ThongTinSVForm = () => {
         case "id":
           if (value.trim() === "") {
             return "vui lòng nhập thông tin";
+          }
+          else if (checkId(value)) {
+            return "Mã sinh viên bị trùng";
           }
           else {
             return "";
